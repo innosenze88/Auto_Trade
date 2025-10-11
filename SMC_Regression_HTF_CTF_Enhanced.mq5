@@ -1,4 +1,39 @@
 //+------------------------------------------------------------------+
+//|                              SMC_Regression_HTF_CTF_Enhanced.mq5 |
+//|                                           Copyright 20XX, MyName |
+//|                                          https://www.mysite.com/ |
+//+------------------------------------------------------------------+
+#property copyright "Copyright 20XX, MyName"
+#property link      "https://www.mysite.com/"
+#property version   "Version = 1.00"
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit() 
+{
+   
+//---
+   return(INIT_SUCCEEDED);
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason) 
+{
+   
+}
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick() 
+{
+   
+}
+
+//+------------------------------------------------------------------+//+------------------------------------------------------------------+
 //| SMC Regression Channel HTF/CTF Alignment Expert Advisor        |
 //| Copyright 2025, SMC Trading Systems                              |
 //| ใช้ Linear Regression Channel สำหรับกำหนดทิศทาง HTF/CTF         |
@@ -1605,6 +1640,7 @@ void CheckOrderBlockEntry() {
 //+------------------------------------------------------------------+
 void CheckFVGEntry() {
     double currentPrice = iClose(_Symbol, _Period, 1);
+
     
     for(int i = 0; i < ArraySize(g_fvgZones); i++) {
         FVGData fvg = g_fvgZones[i];

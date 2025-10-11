@@ -8,6 +8,25 @@
 #property version   "1.00"
 
 //+------------------------------------------------------------------+
+//| Enums and Structures                                              |
+//+------------------------------------------------------------------+
+enum BreakoutType
+{
+   NoBreakout,
+   BullishBOS,
+   BearishBOS,
+   BullishCHoCH,
+   BearishCHoCH
+};
+
+struct BreakoutResult
+{
+   BreakoutType type;
+   double level;
+   int swingIndex;
+};
+
+//+------------------------------------------------------------------+
 //| Check for Buy Signal                                              |
 //+------------------------------------------------------------------+
 bool CheckBuySignal()
