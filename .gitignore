@@ -1,0 +1,60 @@
+# MQL5 compiled files
+*.ex5
+*.ex4
+
+# MetaEditor files
+*.opt
+*.bak
+*.~mq5
+*.~mq4
+*.~mqh
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Log files
+*.log
+
+# MetaTrader data files
+*.hst
+*.fxd
+
+# Tester files
+/Tester/
+*.tst
+
+# Cache files
+/MQL5/Cache/
+/MQL4/Cache/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Build artifacts
+/bin/
+/obj/
+*.dll
+
+# Dependencies
+/lib/
+/Libraries/
+
+# User specific settings
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
