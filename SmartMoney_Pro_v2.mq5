@@ -35,6 +35,17 @@
 #include "Include/Globals.mqh"
 #include "Include/InputParameters.mqh"
 
+// Custom Include Files (Functional Modules)
+#include "Include/TimeFilter.mqh"
+#include "Include/StructureDetection.mqh"
+#include "Include/PatternDetection.mqh"
+#include "Include/EntrySignals.mqh"
+#include "Include/TradeManagement.mqh"
+#include "Include/PositionManagement.mqh"
+#include "Include/RiskManagement.mqh"
+#include "Include/Visualization.mqh"
+#include "Include/UtilityFunctions.mqh"
+
 //+------------------------------------------------------------------+
 //| SECTION 1: EVENT HANDLERS                                        |
 //+------------------------------------------------------------------+
@@ -257,122 +268,48 @@ void OnTradeTransaction(const MqlTradeTransaction &trans,
 //+------------------------------------------------------------------+
 
 // Time Filter Functions (Phase 2)
-bool IsTradingAllowed()
-{
-   if(!EnableTimeFilter)
-      return true;
-
-   // TODO: Implement in Phase 2
-   return true;
-}
-
-datetime GetGMTTime()
-{
-   // TODO: Implement in Phase 2
-   return TimeCurrent();
-}
-
-string GetCurrentSession()
-{
-   // TODO: Implement in Phase 2
-   return "CLOSED 💤";
-}
-
-bool CheckNewsAvoidance()
-{
-   if(!AvoidNewsTime)
-      return true;
-
-   // TODO: Implement in Phase 2
-   return true;
-}
+// NOTE: Implemented in Include/TimeFilter.mqh
+// - IsTradingAllowed()
+// - GetGMTTime()
+// - GetCurrentSession()
+// - CheckNewsAvoidance()
 
 // Structure Detection Functions (Phase 3)
-void UpdateMarketStructure(ENUM_TIMEFRAMES tf, MarketStructure &structure)
-{
-   // TODO: Implement in Phase 3
-}
-
-void ProcessStructureChange(MarketStructure &structure)
-{
-   // TODO: Implement in Phase 3
-}
+// NOTE: Implemented in Include/StructureDetection.mqh
+// - UpdateMarketStructure()
+// - ProcessStructureChange()
+// - UpdateStructureFromZigZag()
+// - DetectSwingsSimple()
 
 // Pattern Detection Functions (Phase 4)
-void DetectFVG()
-{
-   // TODO: Implement in Phase 4
-}
-
-void DetectOrderBlocks()
-{
-   // TODO: Implement in Phase 4
-}
-
-void CleanupOldFVGs()
-{
-   // TODO: Implement in Phase 4
-}
-
-void CleanupOldOrderBlocks()
-{
-   // TODO: Implement in Phase 4
-}
+// NOTE: Implemented in Include/PatternDetection.mqh
+// - DetectFVG()
+// - DetectOrderBlocks()
+// - CleanupOldFVGs()
+// - CleanupOldOrderBlocks()
 
 // Entry Signal Functions (Phase 5)
-void CheckEntrySignals()
-{
-   // TODO: Implement in Phase 5
-}
+// NOTE: Implemented in Include/EntrySignals.mqh
+// - CheckEntrySignals()
+// - CheckBOSImmediate()
+// - CheckBOSRetest()
+// - CheckCHOCHReversal()
+// - CheckCombinedSignals()
 
 // Trade Setup Functions (Phase 6)
-void SetupTrade(bool isBuy, ENUM_SIGNAL_TYPE signal, string reason)
-{
-   // TODO: Implement in Phase 6
-}
-
-void ValidateStops(bool isBuy, double entry, double &sl, double &tp)
-{
-   // TODO: Implement in Phase 6
-}
-
-double CalculateLotSize(double slPoints)
-{
-   // TODO: Implement in Phase 6
-   return 0.1;
-}
-
-bool IsSpreadAcceptable()
-{
-   // TODO: Implement in Phase 6
-   return true;
-}
-
-void ExecuteTrade()
-{
-   // TODO: Implement in Phase 6
-}
+// NOTE: Implemented in Include/TradeManagement.mqh
+// - SetupTrade()
+// - ValidateStops()
+// - CalculateLotSize()
+// - IsSpreadAcceptable()
+// - ExecuteTrade()
 
 // Position Management Functions (Phase 7)
-void ManagePositions()
-{
-   // TODO: Implement in Phase 7
-}
-
-void ApplyBreakeven(ulong ticket, bool isBuy, double openPrice, double &currentSL)
-{
-   // TODO: Implement in Phase 7
-}
-
-void ApplyTrailing(ulong ticket, bool isBuy, double currentPrice, double &currentSL)
-{
-   // TODO: Implement in Phase 7
-}
-
-void ApplyPartialClose(ulong ticket, bool isBuy)
-{
-   // TODO: Implement in Phase 7
-}
+// NOTE: Implemented in Include/PositionManagement.mqh
+// - ManagePositions()
+// - ApplyBreakeven()
+// - ApplyTrailing()
+// - ApplyPartialClose()
 
 // Risk Management Functions (Phase 8)
 bool CheckDailyLimits()
@@ -399,40 +336,15 @@ bool CheckDailyLimits()
    return true;
 }
 
-void CheckAndResetDailyStats()
-{
-   // TODO: Implement in Phase 8
-}
-
-void ResetDailyStats()
-{
-   // TODO: Implement in Phase 8
-}
-
-void UpdateFloatingPNL()
-{
-   stats.floatingProfit = 0;
-
-   // Sum all open positions
-   for(int i = PositionGetFirst(); i >= 0; i = PositionGetNext())
-   {
-      if(PositionGetSymbol() == _Symbol &&
-         PositionGetInteger(POSITION_MAGIC) == EA_MAGIC_NUMBER)
-      {
-         stats.floatingProfit += PositionGetDouble(POSITION_PROFIT);
-      }
-   }
-}
-
-void SaveDailyStats()
-{
-   // TODO: Implement in Phase 8 - Persist stats to GlobalVariables
-}
-
-void LoadDailyStats()
-{
-   // TODO: Implement in Phase 8 - Load from GlobalVariables
-}
+// Additional Risk Management Functions (Phase 8)
+// NOTE: Implemented in Include/RiskManagement.mqh
+// - CheckAndResetDailyStats()
+// - ResetDailyStats()
+// - UpdateFloatingPNL()
+// - SaveDailyStats()
+// - LoadDailyStats()
+// - CalculateTodayClosedProfit()
+// - CountTodayTrades()
 
 // Utility Functions (Phase 11)
 bool IsNewBar(ENUM_TIMEFRAMES tf)
@@ -493,14 +405,13 @@ string GetDeinitReasonText(int reason)
 }
 
 // Display Functions (Phase 10)
-void UpdateStatisticsPanel()
-{
-   if(!ShowPanel)
-      return;
-
-   // TODO: Implement in Phase 10
-   // Build info string with session status, structures, and stats
-}
+// NOTE: Implemented in Include/Visualization.mqh
+// - UpdateStatisticsPanel()
+// - DrawStructureLines()
+// - DrawFVGBox()
+// - UpdateFVGBoxFilled()
+// - DrawOrderBlock()
+// - SendAlert()
 
 //+------------------------------------------------------------------+
 // END OF FILE
