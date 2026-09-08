@@ -1,0 +1,23 @@
+{
+  "mcpServers": {
+    "ezee-pms": {
+      "command": "python",
+      "args": ["mcp_servers/ezee_server.py"],
+      "cwd": "/path/to/viphuanan-ai-system",
+      "env": {
+        "EZEE_API_KEY": "your_api_key",
+        "EZEE_HOTEL_CODE": "your_hotel_code"
+      }
+    },
+    "google-services": {
+      "command": "python",
+      "args": ["mcp_servers/google_server.py"],
+      "cwd": "/path/to/viphuanan-ai-system",
+      "env": {
+        "GOOGLE_CREDENTIALS_FILE": "/path/to/credentials.json",
+        "GOOGLE_CALENDAR_ID": "your_calendar_id@gmail.com",
+        "GOOGLE_SHEETS_ID": "your_spreadsheet_id"
+      }
+    }
+  }
+}
